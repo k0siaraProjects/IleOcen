@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			body
+			{
+				background-color: #222c28;
+				color: #efe;
+				font-size: 48px;
+			}
+			#box
+			{
+				width: 844px;
+				margin: 0 auto;
+			}
+			h1
+			{
+				margin: 0;
+			}
+			small
+			{
+				font-size: 33px;
+			}
+			label
+			{
+				display: block;
+				margin: 15px 0;
+				cursor: pointer;
+			}
+			input
+			{
+				display: block;
+				margin-top: 3px;
+				font-size: 48px;
+				background-color: #efe;
+			}
+			input[type="number"]
+			{
+				width: 830px;
+			}
+			input[type="button"]
+			{
+				float: right;
+				background-color: #35443e;
+				color: #efe;
+				border: none;
+				padding: 15px 20px;
+				margin: 20px 0px;
+				cursor: pointer;
+			}
+			input[type="button"]:hover
+			{
+				background-color: #466857;
+			}
+		</style>
+		<script type="text/javascript">
+			function oblicz()
+			{
+				var srednia = parseFloat(document.forms[0].srednia.value);
+				var ilosc = parseFloat(document.forms[0].ilosc.value);
+				var cel = parseFloat(document.forms[0].cel.value);
+				var jaka = parseFloat(document.forms[0].jaka.value);
+				var i = 0;
+				console.clear();
+				while(srednia < cel)
+				{
+					srednia = srednia*ilosc + jaka
+					ilosc++;
+					srednia /= ilosc;
+					i++;
+					console.log(i + '. ' + srednia);
+				}
+				document.getElementById('output').innerHTML = 'Aby uzyskać średnią ' + cel + ' musisz dostać jeszcze ' + i + ' oceny ' + jaka + ', wagi 1.';
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<h1>Ile ocen do średniej?</h1>
+			<form>
+				<label>Obecna średnia<input type="number" name="srednia"></label>
+				<label>Obecna ilość ocen<small> (ocena z wagą 2 liczy się po-2, itd.)</small><input type="number" name="ilosc"></label>
+				<label>Cel<small> (docelowa średnia)</small><input type="number" name="cel" value="1.65"></label>
+				<label>Jakie oceny<small> (dla jakich ocen obliczyć ilość)</small><input type="number" name="jaka" value="2"></label>
+				<input type="button" onclick="oblicz()" value="Oblicz">
+			</form>
+			<div id="output"></div>
+		</div>
+	</body>
+</html>
